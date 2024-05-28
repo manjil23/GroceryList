@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-//questions
+//questions to ask
 // if we have duplicates then it is deleting everything. How to to same thing with keys?
 //Check line number 59
 
