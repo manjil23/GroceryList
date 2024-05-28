@@ -1,0 +1,73 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+}
+.groceryList {
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 350px;
+  width: 450px;
+  border-radius: 10px;
+  padding: 20px 25px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.groceryList:hover {
+  box-shadow: 5px 5px 10px 2px #a5a9ae;
+}
+
+.label {
+  text-transform: capitalize;
+}
+
+.inputtext {
+  width: 280px;
+  height: 30px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1.5px solid #e1e7ef;
+}
+
+.addItembtn {
+  padding: 10.5px 12px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #22d3ee;
+  gap: 300px;
+  border: none;
+}
+
+.addItembtn:hover {
+  background-color: #0e748f;
+}
+
+.itemList > li > button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 2px 8px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.itemList > li {
+  width: 300px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
