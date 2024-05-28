@@ -1,10 +1,6 @@
 import { useState } from "react";
 import "./App.css";
 
-//questions to ask
-// if we have duplicates then it is deleting everything. How to to same thing with keys?
-//Check line number 59
-
 function App() {
   //managing user inputs
   const [userInput, setUserInput] = useState("");
