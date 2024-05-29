@@ -5,22 +5,34 @@ function App() {
   //managing user inputs
   const [userInput, setUserInput] = useState("");
   //total user inputs
-  const [total, setTotal] = useState([]);
+  const [GroceryList, setGroceryList] = useState([]);
   //handling checkbox events
   const [isChecked, setIsChecked] = useState([]);
 
   //function to handleCheckbox changes
-  function handleCheckBoxChange(e, todoListValue) {
-    if (isChecked.includes(todoListValue)) {
-      console.log(`targetvalue`, e.target.value);
-      console.log(`todo`, todoListValue);
+  function handleCheckBoxChange(index) {
+    if (isChecked.includes(index)) {
       // if we are taking out the value it will filter
-      const newArray = isChecked.filter((value) => value !== todoListValue);
+      const newArray = isChecked.filter((value) => value !== index);
       setIsChecked(newArray);
     } else {
       //if we are adding it will spread plus add the new value
-      setIsChecked([...isChecked, todoListValue]);
+      setIsChecked([...isChecked, index]);
     }
+  }
+  //handle userinput
+  function handleInputChange(event) {
+    setUserInput(event.target.value);
+  }
+  //handle addtask
+  function handleAddTask() {
+    if (userInput.trim() !== "") {
+      setGroceryList((g) => [...g, userInput]);
+    }
+  }
+  //delete the current index item
+  function deleteGroceryList(index) {
+    setGroceryList(GroceryList.filter((e, i) => i !== index));
   }
 
   return (
@@ -29,27 +41,22 @@ function App() {
       <input
         type="text"
         className="inputtext"
+        placeholder="What is the grocery list value?"
         //this will listen to changes, we need to pass the event to look for change
-        onChange={(e) => {
-          setUserInput(e.target.value);
-        }}
+        onChange={handleInputChange}
       />
-
       <button
         className="addItembtn"
         //this will listen to onclick, we are not passing any event from onclick
-        onClick={() => {
-          setTotal([...total, userInput]);
-        }}
+        onClick={handleAddTask}
       >
         Add Item
       </button>
-
       {/* looping through items */}
       <ul className="itemList">
-        {total.map((item, i) => {
+        {GroceryList.map((item, index) => {
           return (
-            <li key={i}>
+            <li key={index}>
               <div>
                 <input
                   //id should not be items??
@@ -57,22 +64,14 @@ function App() {
                   name="todo-list"
                   type="checkbox"
                   value={item}
-                  onChange={(e) => {
-                    handleCheckBoxChange(e, item);
-                  }}
+                  onChange={() => handleCheckBoxChange(index)}
                 />
                 <label className="label" htmlFor={item}>
-                  {isChecked.includes(item) ? <del>{item}</del> : item}
+                  {isChecked.includes(index) ? <del>{item}</del> : item}
                 </label>
               </div>
               {/* Deleting items */}
-              <button
-                onClick={() => {
-                  setTotal(total.filter((e) => e !== item));
-                }}
-              >
-                Delete
-              </button>
+              <button onClick={() => deleteGroceryList(index)}>Delete</button>
             </li>
           );
         })}
